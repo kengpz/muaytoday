@@ -1,8 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html lang="th">
 <head>
-<meta charset='utf-8' />
+<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-static-top"
