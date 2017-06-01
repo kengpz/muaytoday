@@ -23,7 +23,7 @@
 	</bean>
 
 	<!-- DAO -->
-	<bean id="muayDao" class="today.muay.program.dao.impl.muaydaoImpl">
+	<bean id="StadiumDao" class="today.muay.program.dao.impl.StadiumDaoImpl">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
