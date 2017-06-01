@@ -23,8 +23,15 @@
 	</bean>
 
 	<!-- DAO -->
-	<bean id="StadiumDao" class="today.muay.program.dao.impl.StadiumDaoImpl">
+	<bean id="stadiumDao" class="today.muay.program.dao.impl.StadiumDaoImpl">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
+	<!-- Service -->
+	<bean id="objectMapper" class="com.fasterxml.jackson.databind.ObjectMapper" />
+	<bean id="restTemplate" class="org.springframework.web.client.RestTemplate" />
+	<bean id="restTemplateService" class="today.muay.program.service.impl.RestTemplateServiceImpl">
+		<property name="objectMapper" ref="objectMapper" />
+		<property name="restTemplate" ref="restTemplate" />
+	</bean>
 </beans>
