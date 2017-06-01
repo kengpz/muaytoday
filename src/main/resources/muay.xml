@@ -7,14 +7,15 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
-	<context:property-placeholder location="backend.properties" />
+	<context:property-placeholder location="muay.properties" />
 	<tx:annotation-driven transaction-manager="dataSourceTransactionManager" />
 
 	<!-- DataSource -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-		<property name="url" value="jdbc:postgres://gcjqytdwspwgcc:379a2db450a6f82894b7accd165a1e9618250c242a11f6975c87dc1f2ea888e5@ec2-54-163-246-154.compute-1.amazonaws.com:5432/daqjsaiklij3gn" />
-		<property name="username" value="gcjqytdwspwgcc" />
-		<property name="password" value="379a2db450a6f82894b7accd165a1e9618250c242a11f6975c87dc1f2ea888e5" />
+		<property name="driverClassName" value="${postgres.datasource.driverClassName}" />
+		<property name="url" value="${postgres.datasource.url}" />
+		<property name="username" value="${postgres.datasource.username}" />
+		<property name="password" value="${postgres.datasource.password}" />
 	</bean>
 
 	<bean id="dataSourceTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
@@ -25,6 +26,5 @@
 	<bean id="muayDao" class="today.muay.program.dao.impl.muaydaoImpl">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
-
 
 </beans>

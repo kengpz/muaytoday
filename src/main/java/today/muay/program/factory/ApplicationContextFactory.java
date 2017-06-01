@@ -12,7 +12,7 @@ public class ApplicationContextFactory {
 	}
 
 	private ApplicationContextFactory() {
-		context = new ClassPathXmlApplicationContext(new String[] { "\\resources\\mauy.xml" });
+		context = new ClassPathXmlApplicationContext(new String[] { "muay.xml" });
 	}
 
 	public static ApplicationContextFactory getInstance() {
