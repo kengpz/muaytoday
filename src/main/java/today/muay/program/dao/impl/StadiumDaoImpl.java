@@ -21,11 +21,10 @@ public class StadiumDaoImpl implements StadiumDao {
 		this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
 	}
 
-	public int insert(String sid, String sname) {
-		String sql = "INSERT INTO STADIUM (STADIUM_ID, STADIUM_NAME) VALUES (:STADIUM_ID, :STADIUM_NAME)";
+	public int insert(String sname) {
+		String sql = "INSERT INTO STADIUM (STADIUM_NAME) VALUES (:STADIUM_NAME)";
 
 		MapSqlParameterSource paramSource = new MapSqlParameterSource();
-		paramSource.addValue("STADIUM_ID", Integer.parseInt(sid));
 		paramSource.addValue("STADIUM_NAME", sname);
 		int result = namedParameterJdbcTemplate.update(sql, paramSource);
 

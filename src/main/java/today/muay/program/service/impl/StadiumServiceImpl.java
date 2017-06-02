@@ -12,8 +12,8 @@ public class StadiumServiceImpl implements StadiumService {
 		this.stadiumDao = stadiumDao;
 	}
 
-	public int insertStadium(String sid, String sname) {
-		return stadiumDao.insert(sid, sname);
+	public int insertStadium(String sname) {
+		return stadiumDao.insert(sname);
 	}
 
 	public Number updateStadium(Map params) {
