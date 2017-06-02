@@ -11,7 +11,7 @@
 	ProgramDao programDao = (ProgramDao) ApplicationContextFactory.getInstance().getBean("programDao");
 	String action = request.getParameter("action");
 	Map params = BufferedReaderRequest.getRequestMap(request);
-	String program_id = String.valueOf(params.get("PROGRAM_ID"));
+	String program_id = request.getParameter("programid");
 
 	String json = null;
 	if(action.equals("insert")){
