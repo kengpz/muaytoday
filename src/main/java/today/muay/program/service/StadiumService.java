@@ -3,6 +3,6 @@ package today.muay.program.service;
 import java.util.Map;
 
 public interface StadiumService {
-	public Number insertStadium(String name);
+	public int insertStadium(String sid,String sname);
 	public Number updateStadium(Map params);
 }

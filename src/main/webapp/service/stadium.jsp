@@ -6,11 +6,12 @@
 <%@page import="today.muay.program.dao.StadiumDao"%>
 <%@page import="today.muay.program.factory.ApplicationContextFactory"%>
 <%
-	StadiumDao stadiumDao = (StadiumDao) ApplicationContextFactory.getInstance().getBean("StadiumDao");
+	StadiumDao stadiumDao = (StadiumDao) ApplicationContextFactory.getInstance().getBean("stadiumDao");
 	String action = request.getParameter("action");
-	String name = request.getParameter("stadiumname");
+	String sid = request.getParameter("sid");
+	String sname = request.getParameter("sname");
 	if(action.equals("insert")){
-		Number result = stadiumDao.insert(name);
+		Number result = stadiumDao.insert(sid, sname);
 		if(!result.equals("null") ) {
 			out.print("Result = " + result);
 		}
