@@ -39,9 +39,9 @@
 		<property name="restTemplate" ref="restTemplate" />
 	</bean>
 	<bean id="programService" class="today.muay.program.service.impl.ProgramServiceImpl">
-		<property name="dataSource" ref="dataSource" />
+		<property name="programDao" ref="programDao" />
 	</bean>
 	<bean id="stadiumService" class="today.muay.program.service.impl.StadiumServiceImpl">
-		<property name="dataSource" ref="dataSource" />
+		<property name="stadiumDao" ref="stadiumDao" />
 	</bean>
 </beans>
