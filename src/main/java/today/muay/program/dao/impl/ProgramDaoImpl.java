@@ -1,6 +1,5 @@
 package today.muay.program.dao.impl;
 
-import java.util.List;
 import java.util.Map;
 
 import javax.sql.DataSource;
@@ -20,16 +19,6 @@ public class ProgramDaoImpl implements ProgramDao {
 		this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
 	}
 
-	public List queryForListByDate(String date) {
-
-		return null;
-	}
-
-	public List queryForListById(String programId) {
-
-		return null;
-	}
-
 	public int insert(Map params) {
 		String sql = "INSERT INTO PROGRAMMUAY (STADIUM_ID, DATE_MATCH, CAMPAIGN_NAME, PROMOTER_NAME, TICKET_PRICE) VALUES (:STADIUM_ID, :DATE_MATCH, :CAMPAIGN_NAME, :PROMOTER_NAME, :TICKET_PRICE)";
 
@@ -45,11 +34,6 @@ public class ProgramDaoImpl implements ProgramDao {
 		return result;
 	}
 
-	public int update(Map params) {
-
-		return 0;
-	}
-
 	public int delete(int programId) {
 		String sql = "DELETE FROM PROGRAMMUAY WHERE PROGRAM_ID = :PROGRAM_ID";
 
@@ -59,10 +43,5 @@ public class ProgramDaoImpl implements ProgramDao {
 		int result = namedParameterJdbcTemplate.update(sql, paramSource);
 
 		return result;
-	}
-
-	public List queryForList(Map params) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 }
