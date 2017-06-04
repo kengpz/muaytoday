@@ -10,15 +10,19 @@
 <%
 	ProgramDao programDao = (ProgramDao) ApplicationContextFactory.getInstance().getBean("programDao");
 	String action = request.getParameter("action");
-	Map params = BufferedReaderRequest.getRequestMap(request);
-	String program_id = request.getParameter("programid");
+	Map<String, String> params = new HashMap<String, String>();
+	params.put("STADIUM_ID", request.getParameter("stadiumId"));
+	params.put("DATE_MATCH", request.getParameter("dateMatch"));
+	params.put("CAMPAIGN_NAME", request.getParameter("campaignName"));
+	params.put("PROMOTER_NAME", request.getParameter("promoterName"));
+	params.put("TICKET_PRICE", request.getParameter("ticketPrice"));
 
 	String json = null;
 	if(action.equals("insert")){
 		Number result = programDao.insert(params);
 		json = JsonObjectMapper.getInstance().writeValueAsString(result);
 	}else if (action.equals("delete")) {
-		int id = Integer.parseInt(program_id);
+		int id = Integer.parseInt(String.valueOf(request.getParameter("programid")));
 		Number result = programDao.delete(id);
 		json = JsonObjectMapper.getInstance().writeValueAsString(result);
 	}
