@@ -33,10 +33,14 @@
 
 	<!-- Service -->
 	<bean id="objectMapper" class="com.fasterxml.jackson.databind.ObjectMapper" />
+	<bean id="httpHeaders" class="org.springframework.http.HttpHeaders" scope="prototype" />
 	<bean id="restTemplate" class="org.springframework.web.client.RestTemplate" />
 	<bean id="restTemplateService" class="today.muay.program.service.impl.RestTemplateServiceImpl">
 		<property name="objectMapper" ref="objectMapper" />
 		<property name="restTemplate" ref="restTemplate" />
+		<property name="httpHeaders" ref="httpHeaders" />
+		<property name="httpHtmlHeaders" ref="httpHeaders" />
+		<property name="url" value="${backend.url}" />
 	</bean>
 	<bean id="programService" class="today.muay.program.service.impl.ProgramServiceImpl">
 		<property name="programDao" ref="programDao" />

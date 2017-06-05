@@ -13,13 +13,10 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
-import java.util.List;
-import java.util.Map;
-
-import today.muay.program.service.RestTemplateService;
 
 import today.muay.program.json.JsonObjectMapper;
 import today.muay.program.service.RestTemplateService;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class RestTemplateServiceImpl implements RestTemplateService {
@@ -27,8 +24,8 @@ public class RestTemplateServiceImpl implements RestTemplateService {
 	private ObjectMapper objectMapper;
 	private RestTemplate restTemplate;
 	private HttpHeaders httpHeaders;
+	private HttpHeaders httpHtmlHeaders;
 	private String url;
-	private String ixUrl;
 
 	public void setObjectMapper(ObjectMapper objectMapper) {
 		this.objectMapper = objectMapper;
@@ -45,12 +42,14 @@ public class RestTemplateServiceImpl implements RestTemplateService {
 		this.httpHeaders.setContentType(mediaType);
 	}
 
-	public void setUrl(String url) {
-		this.url = url;
+	public void setHttpHtmlHeaders(HttpHeaders httpHtmlHeaders) {
+		MediaType mediaType = new MediaType("text", "html", Charset.forName("UTF-8"));
+		this.httpHtmlHeaders = httpHtmlHeaders;
+		this.httpHtmlHeaders.setContentType(mediaType);
 	}
 
-	public void setIxUrl(String ixUrl) {
-		this.ixUrl = ixUrl;
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 	public String getForString(String action, Map params) {
@@ -59,7 +58,7 @@ public class RestTemplateServiceImpl implements RestTemplateService {
 		try {
 			String json = objectMapper.writeValueAsString(params);
 			HttpEntity<String> requestEntity = new HttpEntity<String>(json, httpHeaders);
-			ResponseEntity<String> responseEntity = restTemplate.exchange(url + action, HttpMethod.POST, requestEntity, String.class);
+			ResponseEntity<String> responseEntity = restTemplate.exchange("http://muaytoday.herokuapp.com" + action, HttpMethod.POST, requestEntity, String.class);
 			String response = objectMapper.readValue(responseEntity.getBody(), String.class);
 
 			return response;
@@ -70,17 +69,17 @@ public class RestTemplateServiceImpl implements RestTemplateService {
 	}
 
 	public Map getInterfaceExchangeForMap(String action, Map params) {
-		logger.info("GetForMap : Action = " + action + ", Params = " + params);
+		logger.info("GetForMap : Action = " + url + action + ", Params = " + params);
 
 		try {
 			String json = objectMapper.writeValueAsString(params);
 			HttpEntity<String> requestEntity = new HttpEntity<String>(json, httpHeaders);
-			ResponseEntity<String> responseEntity = restTemplate.exchange(ixUrl + action, HttpMethod.POST, requestEntity, String.class);
+			ResponseEntity<String> responseEntity = restTemplate.exchange(url + action, HttpMethod.POST, requestEntity, String.class);
 			Map response = objectMapper.readValue(responseEntity.getBody(), Map.class);
 
 			return response;
 		} catch (Exception exception) {
-			logger.info("GetForMap : Action = " + ixUrl + action + ", Params = " + params + ", Exception = " + exception);
+			logger.info("GetForMap : Action = " + url + action + ", Params = " + params + ", Exception = " + exception);
 			return null;
 		}
 	}
@@ -103,5 +102,22 @@ public class RestTemplateServiceImpl implements RestTemplateService {
 
 	public String getXmlValue(String request) throws Exception {
 		return restTemplate.getForObject(request, String.class);
+	}
+
+	public List getForList(String action, Map params) {
+		logger.info("GetForList : Action = " + action + ", Params = " + params);
+		System.out.println("GetForList : Action = " + url + action + ", Params = " + params);
+
+		try {
+			String json = objectMapper.writeValueAsString(params);
+			HttpEntity<String> requestEntity = new HttpEntity<String>(json, httpHeaders);
+			ResponseEntity<String> responseEntity = restTemplate.exchange(url + action, HttpMethod.POST, requestEntity, String.class);
+			List response = objectMapper.readValue(responseEntity.getBody(), List.class);
+
+			return response;
+		} catch (Exception exception) {
+			logger.info("GetForList : Action = " + url + action + ", Params = " + params + ", Exception = " + exception);
+			return null;
+		}
 	}
 }

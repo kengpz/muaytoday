@@ -8,4 +8,5 @@ public interface RestTemplateService {
 	public Map getInterfaceExchangeForMap(String action, Map params);
 	public String getXmlValue(String url) throws Exception;
 	public List getForStringjson(String request);
+	public List getForList(String action, Map params);
 }

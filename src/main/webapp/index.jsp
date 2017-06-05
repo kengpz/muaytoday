@@ -28,5 +28,10 @@
 
 	<div class="separate"></div>
 	</div>
+	<div class="separate"></div>
+	<div id="rate" style="display:block;"></div>
 </body>
+<script  type="text/javascript" charset="utf-8">
+$("#rate").load("/front/rate.php");
+</script>
 </html>

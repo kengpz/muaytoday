@@ -46,7 +46,8 @@ public class ProgramDaoImpl implements ProgramDao {
 	}
 
 	public List getProgramByDate(String date) {
-		String sql = "SELECT * FROM PROGRAMMUAYINFO WHERE DATE_MATCH LIKE '%" + date + "%'";
+		String sql = "SELECT * FROM PROGRAMMUAYINFO JOIN PROGRAMMUAY ON PROGRAMMUAY.PROGRAM_ID = PROGRAMMUAYINFO.PROGRAM_ID JOIN STADIUM ON STADIUM.STADIUM_ID = PROGRAMMUAY.STADIUM_ID  WHERE PROGRAMMUAYINFO.PROGRAM_ID = (SELECT PROGRAM_ID FROM PROGRAMMUAY WHERE DATE_MATCH = '"+date+"')";
+		System.out.println("SQL = " + sql);
 		List list = jdbcTemplate.queryForList(sql);
 
 		return list;
