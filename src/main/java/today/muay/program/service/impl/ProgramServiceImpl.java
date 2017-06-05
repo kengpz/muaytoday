@@ -1,5 +1,6 @@
 package today.muay.program.service.impl;
 
+import java.util.List;
 import java.util.Map;
 
 import today.muay.program.dao.ProgramDao;
@@ -18,5 +19,13 @@ public class ProgramServiceImpl implements ProgramService {
 
 	public int delete(String programId) {
 		return programDao.delete(Integer.parseInt(programId));
+	}
+
+	public List getProgramById(String id) {
+		return programDao.getProgramById(id);
+	}
+
+	public List getProgramByDate(String date) {
+		return programDao.getProgramByDate(date);
 	}
 }

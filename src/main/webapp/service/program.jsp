@@ -25,6 +25,14 @@
 		int id = Integer.parseInt(String.valueOf(request.getParameter("programid")));
 		Number result = programDao.delete(id);
 		json = JsonObjectMapper.getInstance().writeValueAsString(result);
+	}else if (action.equals("getbydate")) {
+		String date = request.getParameter("dateMatch");
+		List result = programDao.getProgramByDate(date);
+		json = JsonObjectMapper.getInstance().writeValueAsString(result);
+	}else if (action.equals("getbyid")) {
+		String id = request.getParameter("programid");
+		List result = programDao.getProgramById(id);
+		json = JsonObjectMapper.getInstance().writeValueAsString(result);
 	}
 %>
 <%out.clear();%><%=json%>

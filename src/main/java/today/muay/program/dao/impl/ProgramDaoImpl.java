@@ -1,5 +1,6 @@
 package today.muay.program.dao.impl;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.sql.DataSource;
@@ -39,9 +40,22 @@ public class ProgramDaoImpl implements ProgramDao {
 
 		MapSqlParameterSource paramSource = new MapSqlParameterSource();
 		paramSource.addValue("PROGRAM_ID", programId);
-
 		int result = namedParameterJdbcTemplate.update(sql, paramSource);
 
 		return result;
+	}
+
+	public List getProgramByDate(String date) {
+		String sql = "SELECT * FROM PROGRAMMUAYINFO WHERE DATE_MATCH LIKE '%" + date + "%'";
+		List list = jdbcTemplate.queryForList(sql);
+
+		return list;
+	}
+
+	public List getProgramById(String id) {
+		String sql = "SELECT * FROM PROGRAMMUAYINFO WHERE PROGRAM_ID = " + Integer.parseInt(id);
+		List list = jdbcTemplate.queryForList(sql);
+
+		return list;
 	}
 }
