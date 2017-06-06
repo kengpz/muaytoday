@@ -32,7 +32,7 @@
 	<div class="row">
 		<div class="col-md-2"></div>
 		<div class="col-md-8">
-				<div id="rate" class="content-secondary"></div>
+				
 		</div>
 		<div class="col-md-2"></div>
 
@@ -40,7 +40,4 @@
 	</div>
 	
 </body>
-<script  type="text/javascript" charset="utf-8">
-$("#rate").load("/front/rate.php");
-</script>
 </html>
