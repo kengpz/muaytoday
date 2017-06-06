@@ -21,7 +21,7 @@
 	<jsp:include page="/front/header.jsp" />
 	<div class="row">
 		<div class="col-md-2"></div>
-		<div class="col-md-8">
+		<div class="col-md-8" class="content-main">
 				<jsp:include page="/front/programmuay.jsp" />
 		</div>
 		<div class="col-md-2"></div>
@@ -29,7 +29,16 @@
 	<div class="separate"></div>
 	</div>
 	<div class="separate"></div>
-	<div id="rate" style="display:block;"></div>
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+				<div id="rate" class="content-secondary"></div>
+		</div>
+		<div class="col-md-2"></div>
+
+	<div class="separate"></div>
+	</div>
+	
 </body>
 <script  type="text/javascript" charset="utf-8">
 $("#rate").load("/front/rate.php");

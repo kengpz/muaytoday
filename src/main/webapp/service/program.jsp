@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page language="java" contentType="application/json; charset=utf-8" pageEncoding="utf-8"%>
 <%@page import="java.util.Map"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.List"%>
@@ -8,6 +8,7 @@
 <%@page import="today.muay.program.request.BufferedReaderRequest"%>
 <%@page import="today.muay.program.factory.ApplicationContextFactory"%>
 <%
+	request.setCharacterEncoding("UTF-8");
 	ProgramDao programDao = (ProgramDao) ApplicationContextFactory.getInstance().getBean("programDao");
 	String action = request.getParameter("action");
 	Map<String, String> params = new HashMap<String, String>();

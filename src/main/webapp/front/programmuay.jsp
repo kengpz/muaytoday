@@ -41,6 +41,7 @@
 						<th>พิกัด</th>
 						<th>ทัศนะ</th>
 						<th>ผลมวย</th>
+						<th>หมายเหตุ</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -54,6 +55,7 @@
 						<td><%= result.get("weight") %></td>
 						<td><%= result.get("reduce") %></td>
 						<td><%= result.get("result") %></td>
+						<td><%= result.get("remark") %></td>
 					</tr>
 					<%} %>
 				</tbody>
