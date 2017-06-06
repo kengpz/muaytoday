@@ -12,7 +12,8 @@
 	<div class="container">
 		<form class="form-inline" method="POST">
 			<div class="form-group">
-				<label for="email">Stadium : </label> 
+				<label for="email">Stadium : </label>
+				<input type="hidden" class="form-control" id="action" name="action" value="insert" /> 
 				<input type="text" class="form-control" id="sname" name="sname">
 			</div>
 			<button type="submit" class="btn btn-default" style="margin-left: 15px;" id="add">Submit</button>
