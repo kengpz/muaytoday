@@ -29,6 +29,12 @@
 
 	String resultHead1 = String.valueOf(head.get("campaign_name")) + " เวทีมวย" + stadium + "  " + srtDate;
 	String resultHead2 = " โปรโมเตอร์ \"" + String.valueOf(head.get("promoter_name")) + "\" ราคาบัตร " + String.valueOf(head.get("ticket_price"));
+	if (resultHead1 != null) {
+		resultHead1 = new String(resultHead1.getBytes("ISO-8859-1"), "UTF-8");
+	}
+	if (resultHead2 != null) {
+		resultHead2 = new String(resultHead2.getBytes("ISO-8859-1"), "UTF-8");
+	}
 %>
 		<div class="panel panel-primary col-md-*">
 			<div class="panel-heading" style="font-size: 30px;padding-right:110px;"><%= resultHead1 %> <%= resultHead2 %></div>
