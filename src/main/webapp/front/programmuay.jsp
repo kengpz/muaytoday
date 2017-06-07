@@ -26,9 +26,12 @@
 	int dayOfMonth = now.get(Calendar.DAY_OF_MONTH);
 	String srtDate = iday[now.get(Calendar.DAY_OF_WEEK)] +"  ที่ "+ String.valueOf(dayOfMonth) +"  "+ imonth[month] +"  "+ String.valueOf(year);
 	String stadium = String.valueOf(head.get("stadium_name"));
+	String campaign = String.valueOf(head.get("campaign_name"));
+	String ticket_price = String.valueOf(head.get("ticket_price"));
+	String promoter_name = String.valueOf(head.get("promoter_name"));
 
-	String resultHead1 = String.valueOf(head.get("campaign_name")) + " เวทีมวย" + stadium + "  " + srtDate;
-	String resultHead2 = " โปรโมเตอร์ \"" + String.valueOf(head.get("promoter_name")) + "\" ราคาบัตร " + String.valueOf(head.get("ticket_price"));
+	String resultHead1 = campaign + " เวทีมวย" + stadium + "  " + srtDate;
+	String resultHead2 = " โปรโมเตอร์ \"" + promoter_name + "\" ราคาบัตร " + ticket_price;
 	if (resultHead1 != null) {
 		resultHead1 = new String(resultHead1.getBytes("ISO-8859-1"), "UTF-8");
 	}
@@ -36,6 +39,12 @@
 		resultHead2 = new String(resultHead2.getBytes("ISO-8859-1"), "UTF-8");
 	}
 %>
+<html lang="th">
+<head>
+<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+	<body>
 		<div class="panel panel-primary col-md-*">
 			<div class="panel-heading" style="font-size: 30px;padding-right:110px;"><%= resultHead1 %> <%= resultHead2 %></div>
 			<table class="table table-responsive">
@@ -67,3 +76,5 @@
 				</tbody>
 			</table>
 		</div>
+	</body>
+</html>
